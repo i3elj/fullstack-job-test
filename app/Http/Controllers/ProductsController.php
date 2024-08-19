@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -12,23 +16,8 @@ class ProductsController extends Controller
      */
     public function view(Request $request): View
     {
-        return view("products");
-    }
-
-    /**
-     * Display a specific product for edition.
-     */
-    public function edit(Request $request): View
-    {
-        return view("products");
-    }
-
-    /**
-     * Update a specific product.
-     */
-    public function update(Request $request): View
-    {
-        return view("products");
+        $products = Product::all();
+        return view("products.view", ["products" => $products]);
     }
 
     /**
@@ -36,14 +25,49 @@ class ProductsController extends Controller
      */
     public function new(Request $request): View
     {
-        return view("products");
+        return view("products.new");
     }
 
     /**
-     * Deletes a product in the database.
+     * Display a specific product for edition.
      */
-    public function delete(Request $request): View
+    public function edit(Request $request, int $id): View
     {
-        return view("products");
+        $product = Product::where("id", $id)->first();
+        Log::debug($product->name);
+        Log::debug($id);
+        return view("products.edit", ["product" => $product]);
+    }
+
+    /**
+     * Create a new record in the database.
+     */
+    public function create(Request $request): RedirectResponse
+    {
+        $name = $request->input("name");
+        $category = $request->input("category");
+        $price = $request->input("price");
+
+        $product = new Product();
+        $product->name = $name;
+        $product->category = $category;
+        $product->price = $price;
+        $product->save();
+
+        return redirect()->route("products.view");
+    }
+
+    /**
+     * Update a record in the database.
+     */
+    public function update(Request $request): void
+    {
+    }
+
+    /**
+     * Deletes a record in the database.
+     */
+    public function delete(Request $request): void
+    {
     }
 }
