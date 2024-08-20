@@ -17,7 +17,6 @@ class ProductsController
      */
     public function view(Request $request): View
     {
-        // $products = Product::all();
         $products = Product::paginate(8);
         return view("products.view", ["products" => $products]);
     }
