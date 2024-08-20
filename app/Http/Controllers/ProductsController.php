@@ -17,7 +17,8 @@ class ProductsController extends Controller
      */
     public function view(Request $request): View
     {
-        $products = Product::all();
+        // $products = Product::all();
+        $products = Product::paginate(2);
         return view("products.view", ["products" => $products]);
     }
 

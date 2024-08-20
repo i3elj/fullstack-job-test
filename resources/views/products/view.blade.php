@@ -54,5 +54,7 @@
         </div>
     </dialog>
 
+    {{ $products->links() }}
+
     <div id="notifications" class="flex flex-col gap-2"></div>
 </x-guest-layout>
