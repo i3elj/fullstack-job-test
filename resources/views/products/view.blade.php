@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="flex justify-between items-center mb-4">
         <h1>Produtos</h1>
-        <a href="{{ route('products.new') }}" class="p-4 border bg-gray-950" >
+        <a href="{{ route('products.new') }}" class="p-4 border hover:bg-gray-50" >
             Adicionar Produtos
         </a>
     </div>
@@ -24,8 +24,13 @@
                     <td class="p-4 border">{{ $product->price }}</td>
                     <td class="p-4 border">{{ $product->created_at }}</td>
                     <td class="p-4 border">
-                        <button>Remover</button>
-                        <a href="{{ route('products.edit', ['id' => $product->id] ) }} ">Editar</a>
+                        <!-- TODO: change this for js way -->
+                        <form method="POST" action="{{ route('products.delete', ['id' => $product->id]) }}">
+                            @csrf
+                            @method("DELETE")
+                            <button>Remover</button>
+                        </form>
+                        <a href="{{ route('products.edit', ['id' => $product->id]) }} ">Editar</a>
                     </td>
                 </tr>
             @endforeach

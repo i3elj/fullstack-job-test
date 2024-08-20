@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --light-pink: #f2b3c6;
+    --light-green: #e0f9e7;
+    --error: #994747;
+    --success: #3fc661;
+}
+
+.input-error {
+    border-color: var(--error) !important;
+}
+
+#notifications {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+
+    & .msg-notification {
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid;
+    }
+
+    & .msg-notification.success {
+        border-color: var(--success);
+        background-color: var(--light-green);
+        & p {
+            color: var(--success);
+        }
+    }
+
+    & .msg-notification.error {
+        border-color: var(--error);
+        background-color: var(--light-pink);
+        & p {
+            color: var(--error);
+        }
+    }
+}
