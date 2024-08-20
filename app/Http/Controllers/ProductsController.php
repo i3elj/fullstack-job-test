@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
-class ProductsController extends Controller
+class ProductsController
 {
     /**
      * Display a list of products.
@@ -18,7 +18,7 @@ class ProductsController extends Controller
     public function view(Request $request): View
     {
         // $products = Product::all();
-        $products = Product::paginate(2);
+        $products = Product::paginate(8);
         return view("products.view", ["products" => $products]);
     }
 
@@ -111,7 +111,7 @@ class ProductsController extends Controller
     {
         if (!isset($name)) {
             $resp["success"] = false;
-            array_push($resp["msgs"], "O nome do item nao pode estar vazio");
+            array_push($resp["msgs"], "O nome do item não pode estar vazio");
         }
         return $resp;
     }
@@ -129,14 +129,14 @@ class ProductsController extends Controller
     {
         if (!isset($price)) {
             $resp["success"] = false;
-            array_push($resp["msgs"], "O item precisa de um preco");
+            array_push($resp["msgs"], "O item precisa de um preço");
         }
 
         if (isset($price) && !preg_match("/^[0-9\.]*$/", $price)) {
             $resp["success"] = false;
             array_push(
                 $resp["msgs"],
-                "O preco do item nao pode conter letras ou simbolos especiais"
+                "O preço do item não pode conter letras ou simbolos especiais"
             );
         }
 
