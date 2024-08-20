@@ -98,13 +98,12 @@ class ProductsController extends Controller
 
     /**
      * Deletes a record in the database.
-     * TODO: ask confirmation
      */
-    public function delete(Request $request, int $id): RedirectResponse
+    public function delete(Request $request, int $id): JsonResponse
     {
         Product::destroy($id);
 
-        return redirect()->route("products.view");
+        return response()->json(["success" => true]);
     }
 
     private function verifyName(string|null $name, array $resp): array

@@ -41,7 +41,7 @@ form?.addEventListener("submit", (event) => {
     .then((res) => res.json())
     .then((json) => {
       notify(json, notifications);
-      setTimeout(() => (window.location.href = "/products"), 5000);
+      setTimeout(() => (window.location.href = "/products"), 2000);
     });
 });
 
