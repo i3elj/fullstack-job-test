@@ -1,30 +1,30 @@
-<x-guest-layout>
+<x-app-layout>
     @push("vite")
         @vite(["resources/js/products/form-validation.ts"])
     @endpush
 
-    <div class="mx-auto">
-        <h2 class="mb-6">Adicionar Produto</h2>
+    <div class="m-auto w-fit">
+        <h2 class="mb-6 mt-4 text-lg text-center">Adicionar Produto</h2>
         <form id="product-form" class="flex flex-col gap-4 text-start" method="POST" action="{{ route('products.create') }}">
             @csrf
             <label class="flex flex-col">
                 Nome
                 <input type="text" name="name" placeholder="Nome do produto" required />
-                <span id="name-error" class="hidden list-disc ml-4 text-red-400">Nome nao pode estar vazio</span>
+                <span id="name-error" class="hidden list-disc ml-4 text-red-400">Nome não pode estar vazio</span>
             </label>
 
             <label class="flex flex-col">
                 Categoria
                 <input type="text" name="category" placeholder="Categoria do produto" required />
-                <span id="category-error" class="hidden list-disc ml-4 text-red-400">Categoria nao pode estar vazia</span>
+                <span id="category-error" class="hidden list-disc ml-4 text-red-400">Categoria não pode estar vazia</span>
             </label>
 
             <label class="flex flex-col">
-                Preco
+                Preço
                 <input type="text" name="price" placeholder="R$ 5.29" required />
                 <ul>
-                   <li class="price-errors hidden list-disc ml-4 text-red-400">Caracteres especiais nao sao permitidos</li>
-                   <li class="price-errors hidden list-disc ml-4 text-red-400">O preco deve ser abaixo de 1 milhao</li>
+                   <li class="price-errors hidden list-disc ml-4 text-red-400">Caracteres especiais não são permitidos</li>
+                   <li class="price-errors hidden list-disc ml-4 text-red-400">O preço deve ser abaixo de 1 milhao</li>
                 </ul>
             </label>
 
@@ -33,4 +33,4 @@
             <div id="notifications" class="flex flex-col gap-2"></div>
         </form>
     </div>
-</x-guest-layout>
+</x-app-layout>
