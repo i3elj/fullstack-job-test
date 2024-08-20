@@ -21,8 +21,12 @@ Route::get("/products/{id}", [ProductsController::class, "edit"])->name(
 Route::post("/products", [ProductsController::class, "create"])->name(
     "products.create"
 );
-Route::put("/products/{id}", [ProductsController::class, "update"]);
-Route::delete("/products/{id}", [ProductsController::class, "delete"]);
+Route::put("/products/{id}", [ProductsController::class, "update"])->name(
+    "products.update"
+);
+Route::delete("/products/{id}", [ProductsController::class, "delete"])->name(
+    "products.delete"
+);
 
 Route::middleware("auth")->group(function () {});
 
