@@ -1,4 +1,3 @@
-
 # DomPixel Job Test
 
 Uma aplicação escrita em Laravel para cadastro e gerenciamento de produtos.
@@ -10,7 +9,6 @@ Uma aplicação escrita em Laravel para cadastro e gerenciamento de produtos.
 - **Remoção de produtos**: Produtos podem ser removidos.
 
 > Obs: para realizar essas ações o usuário deve estar autorizado
-> 
 
 ## Como rodar a aplicação
 
@@ -27,43 +25,43 @@ Uma aplicação escrita em Laravel para cadastro e gerenciamento de produtos.
 ### Arch
 
 - Comando para instalação das dependências no arch linux (SO utilizado para o desenvolvimento da aplicação):
-    
+
     ```bash
     pacman -S php php-sqlite node # requires sudo privilege
     ```
-    
+
 - Para instalar o composer basta seguir as instruções do [site oficial](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos).
 
 ### Pós instalação
 
 - Clone o projeto e entre na pasta:
-    
+
     ```bash
     git clone https://github.com/i3elj/fullstack-job-test && cd fullstack-job-test
     ```
-    
+
 - Instale as dependências do laravel:
-    
+
     ```bash
     composer install
     ```
-    
+
 - Instale as dependências do node:
-    
+
     ```bash
     npm install
     ```
-    
+
 - Copie o `.env.example` para o `.env` e rode os seguintes comandos:
-    
+
     ```bash
     php artisan key:generate
     ```
-    
+
     ```bash
     php artisan migrate
     ```
-    
+
 
 A partir desse ponto a aplicação já deve estar pronta para rodar. Por último é necessário que o vite (a ferramenta de build para arquivos CSS e JS) esteja pronto para o uso. Para isso basta rodar:
 
