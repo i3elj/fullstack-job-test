@@ -23,7 +23,7 @@
 
             <label class="flex flex-col">
                 Preço
-                <input type="number" name="price" placeholder="5.29" value="{{ $product->price }}" required />
+                <input type="text" name="price" placeholder="R$ 5.29" value="{{ $product->price }}" required />
                 <ul>
                    <li class="price-errors hidden list-disc ml-4 text-red-400">Caracteres especiais não são permitidos</li>
                    <li class="price-errors hidden list-disc ml-4 text-red-400">O preço deve ser abaixo de 1 milhao</li>

@@ -19,6 +19,10 @@
     right: 2rem;
 
     & .msg-notification {
+        display: flex;
+        place-items: center;
+        place-content: center;
+        gap: 0.25rem;
         padding: 1rem;
         border-radius: 8px;
         border: 1px solid;
@@ -27,7 +31,8 @@
     & .msg-notification.success {
         border-color: var(--success);
         background-color: var(--light-green);
-        & p {
+        & p,
+        span {
             color: var(--success);
         }
     }
@@ -35,7 +40,8 @@
     & .msg-notification.error {
         border-color: var(--error);
         background-color: var(--light-pink);
-        & p {
+        & p,
+        span {
             color: var(--error);
         }
     }

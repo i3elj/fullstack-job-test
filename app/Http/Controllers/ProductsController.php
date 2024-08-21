@@ -17,7 +17,6 @@ class ProductsController
      */
     public function view(Request $request): View
     {
-        // $products = Product::all();
         $products = Product::paginate(8);
         return view("products.view", ["products" => $products]);
     }
@@ -104,7 +103,10 @@ class ProductsController
     {
         Product::destroy($id);
 
-        return response()->json(["success" => true]);
+        return response()->json([
+            "success" => true,
+            "msgs" => ["Item removido"],
+        ]);
     }
 
     private function verifyName(string|null $name, array $resp): array

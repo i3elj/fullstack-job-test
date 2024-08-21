@@ -41,7 +41,7 @@ form?.addEventListener("submit", (event) => {
     .then((res) => res.json())
     .then((json) => {
       notify(json, notifications);
-      setTimeout(() => (window.location.href = "/products"), 2000);
+      setTimeout(() => (window.location.href = "/products"), 3000);
     });
 });
 
@@ -103,10 +103,11 @@ export function checkPriceForErrors(
 
 export function notify(json: any, notifications: HTMLDivElement) {
   json.msgs.forEach((msg: string, i: number) => {
-    const notification = new MsgNotification(msg, json.success);
-    const element = notification.getElement();
+    const popup = new MsgNotification(msg, json.success, 3);
+    const element = popup.getElement();
     notifications.appendChild(element);
+    popup.startTimer();
     const factor = i == 0 ? 1 : i / 1.5;
-    setTimeout(() => notifications?.removeChild(element), 5000 * factor);
+    setTimeout(() => notifications?.removeChild(element), 3000 * factor);
   });
 }

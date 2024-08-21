@@ -29,13 +29,15 @@
                         <td class="p-4 border text-center">R$ {{ $product->price }}</td>
                         <td class="p-4 border text-center">{{ $product->created_at->format('d/m/Y') }}</td>
                         <td class="p-4 border text-center flex">
-                            <button class="delete-button"
+                            <button
+                                class="delete-button flex items-center justify-center"
                                 data-route="{{ route('products.delete', ['id' => $product->id]) }}"
-                                data-name="{{ $product->name }}">
-                                    @csrf
-                                    <x-icons.delete class="w-3/4" />
-                                </button>
-                            <a href="{{ route('products.edit', ['id' => $product->id]) }} ">
+                                data-name="{{ $product->name }}"
+                            >
+                                @csrf
+                                <x-icons.delete class="w-3/4" />
+                            </button>
+                            <a href="{{ route('products.edit', ['id' => $product->id]) }} " class="flex items-center justify-center">
                                 <x-icons.edit class="w-3/4" />
                             </a>
                         </td>

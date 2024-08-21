@@ -28,7 +28,7 @@
                 </ul>
             </label>
 
-            <button type="submit" class="p-2 border rounded hover:bg-slate-300">Adicionar</button>
+            <button type="submit" class="p-2 border rounded bg-white hover:bg-slate-300">Adicionar</button>
 
             <div id="notifications" class="flex flex-col gap-2"></div>
         </form>

@@ -12,7 +12,7 @@ const notifications = document.querySelector(
 ) as HTMLDivElement;
 
 document.querySelectorAll(".delete-button").forEach((btn: Element, i) => {
-  const button = btn as HTMLElement;
+  const button = btn as HTMLButtonElement;
   const route = button.dataset.route;
   const csrf = button.querySelector("input[name='_token']") as HTMLInputElement;
   const csrfToken = csrf.value;
@@ -29,15 +29,15 @@ document.querySelectorAll(".delete-button").forEach((btn: Element, i) => {
           method: "DELETE",
         });
         const json = await res.json();
-        const popup = new MsgNotification("Item removido", json.success);
+        const popup = new MsgNotification(json.msgs[0], json.success, 2);
         const element = popup.getElement();
         notifications.appendChild(element);
+        popup.startTimer();
+        setTimeout(
+          () => (window.location.href = "/products"),
+          popup.timer * 1000,
+        );
         dialog.close();
-
-        setTimeout(() => {
-          notifications.removeChild(element);
-          window.location.href = "/products";
-        }, 2000);
       })();
     };
 
